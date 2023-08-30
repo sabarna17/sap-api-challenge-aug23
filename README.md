@@ -20,8 +20,11 @@ After Import the flow will look like ->
 
 This Subflow is going to be reused accross all the Tasks.
 
+### Note: Copy the entire flows from - [API-Challenge](https://github.com/sabarna17/sap-api-challenge-aug23/blob/main/API-Challenge.json)
 
+Now you can see all the flows are in your Node-Red Dashboard.
+And Task-0 solution is looking like this ->
+![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/72a44516-c62d-475d-b71e-676a1603b223)
 
-
-
-
+You can click on the deploy button ![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/45e9ddca-ce91-422e-91bc-aeee8ff16b36)
+and get ready to click the inject for Task-0. 
