@@ -1,0 +1,2874 @@
+[
+    {
+        "id": "2676c647950e6a50",
+        "type": "subflow",
+        "name": "SAP-API Hash",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 60,
+                "wires": [
+                    {
+                        "id": "f3d04762c250c19f"
+                    }
+                ]
+            }
+        ],
+        "out": [],
+        "env": [
+            {
+                "name": "CommunityID",
+                "type": "str",
+                "value": "sabarna17"
+            },
+            {
+                "name": "topic",
+                "type": "str",
+                "value": "Task-N"
+            }
+        ],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "cb5f9176afe220eb",
+        "type": "function",
+        "z": "2676c647950e6a50",
+        "name": "Encode & Modify HASH URL",
+        "func": "msg.url = \"https://developer-challenge.cfapps.eu10.hana.ondemand.com/v1/hash(value='\" + encodeURIComponent(msg.payload) + \"')\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 40,
+        "wires": [
+            [
+                "9404eed595446ba1",
+                "a8894fb198e6b8ad"
+            ]
+        ]
+    },
+    {
+        "id": "9404eed595446ba1",
+        "type": "http request",
+        "z": "2676c647950e6a50",
+        "name": "GET Method to Hash your String",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "CommunityID",
+                "valueType": "msg",
+                "valueValue": "CommunityID"
+            }
+        ],
+        "x": 890,
+        "y": 40,
+        "wires": [
+            [
+                "0b6bdd7085e2d059"
+            ]
+        ]
+    },
+    {
+        "id": "a8894fb198e6b8ad",
+        "type": "debug",
+        "z": "2676c647950e6a50",
+        "name": "Display URL for Hash",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "d1a8fa2ecfdd69a6",
+        "type": "inject",
+        "z": "2676c647950e6a50",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "CommunityID",
+                "v": "CommunityID",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "string_for_hash",
+        "payloadType": "flow",
+        "x": 190,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0b6bdd7085e2d059",
+        "type": "debug",
+        "z": "2676c647950e6a50",
+        "name": "Display Hash Value",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "f3d04762c250c19f",
+        "type": "change",
+        "z": "2676c647950e6a50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "string_for_hash",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "CommunityID",
+                "pt": "msg",
+                "to": "CommunityID",
+                "tot": "env"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "topic",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 180,
+        "y": 60,
+        "wires": [
+            [
+                "a8f367ce948a7806"
+            ]
+        ]
+    },
+    {
+        "id": "a8f367ce948a7806",
+        "type": "switch",
+        "z": "2676c647950e6a50",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "null"
+            },
+            {
+                "t": "neq",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 330,
+        "y": 60,
+        "wires": [
+            [
+                "1b0cccf6856fdcb6"
+            ],
+            [
+                "cb5f9176afe220eb"
+            ],
+            [
+                "1b0cccf6856fdcb6"
+            ]
+        ]
+    },
+    {
+        "id": "e9045c1cb34131ed",
+        "type": "debug",
+        "z": "2676c647950e6a50",
+        "name": "Error",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "1b0cccf6856fdcb6",
+        "type": "change",
+        "z": "2676c647950e6a50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Blank Payload. Please validate String.",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 100,
+        "wires": [
+            [
+                "e9045c1cb34131ed"
+            ]
+        ]
+    },
+    {
+        "id": "2cfa3c0919b4ad10",
+        "type": "tab",
+        "label": "API Challenege",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "88140e60d62d7aa9",
+        "type": "inject",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Task-3",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "sabarna17",
+        "payloadType": "str",
+        "x": 130,
+        "y": 480,
+        "wires": [
+            [
+                "66309a88ad3a7cb3"
+            ]
+        ]
+    },
+    {
+        "id": "202e3574f65a93ed",
+        "type": "http request",
+        "z": "2cfa3c0919b4ad10",
+        "name": "HTTP ODATAV4 Action - selectProduct",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://developer-challenge.cfapps.eu10.hana.ondemand.com/odata/v4/northbreeze/selectProduct",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 230,
+        "y": 520,
+        "wires": [
+            [
+                "d1b0598f5241152e"
+            ]
+        ]
+    },
+    {
+        "id": "d1b0598f5241152e",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Get Product Name",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 520,
+        "wires": [
+            [
+                "a917f57f023e8a1b"
+            ]
+        ]
+    },
+    {
+        "id": "66309a88ad3a7cb3",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{ \"communityid\": msg.payload }",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 480,
+        "wires": [
+            [
+                "202e3574f65a93ed"
+            ]
+        ]
+    },
+    {
+        "id": "46b35ab920c8b686",
+        "type": "comment",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Task-3",
+        "info": "",
+        "x": 110,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "0d21c412a734e151",
+        "type": "comment",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Task-4",
+        "info": "",
+        "x": 90,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "0b896450e400a5b0",
+        "type": "debug",
+        "z": "2cfa3c0919b4ad10",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "3cc98f3f3ceeb68b",
+        "type": "file in",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "filename": "C:\\Users\\sabar\\Downloads\\DateAndTime.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 820,
+        "y": 980,
+        "wires": [
+            [
+                "6719dc92ad0283ce"
+            ]
+        ]
+    },
+    {
+        "id": "1c8bab0552440bca",
+        "type": "inject",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Read DateAndTime Paths and Create the String for Hash",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 410,
+        "y": 980,
+        "wires": [
+            [
+                "3cc98f3f3ceeb68b"
+            ]
+        ]
+    },
+    {
+        "id": "9419f863d53d4afc",
+        "type": "inject",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "sabarna17",
+        "payloadType": "str",
+        "x": 260,
+        "y": 920,
+        "wires": [
+            [
+                "21c457a5744fde61"
+            ]
+        ]
+    },
+    {
+        "id": "21c457a5744fde61",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "CommunityID",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 920,
+        "wires": [
+            [
+                "9c069863dbd63036"
+            ]
+        ]
+    },
+    {
+        "id": "9c069863dbd63036",
+        "type": "debug",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Set Community ID",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "1e839d65221f667e",
+        "type": "function",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Modify URL for Hashing",
+        "func": "msg.url = \"https://developer-challenge.cfapps.eu10.hana.ondemand.com/v1/hash(value='\" + msg.payload + \"')\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 1280,
+        "wires": [
+            [
+                "f4e356e17a570368",
+                "c9f09cc65f0b2444"
+            ]
+        ]
+    },
+    {
+        "id": "f4e356e17a570368",
+        "type": "http request",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Call GET Method to Hash your String",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "CommunityID",
+                "valueType": "msg",
+                "valueValue": "CommunityID"
+            }
+        ],
+        "x": 830,
+        "y": 1280,
+        "wires": [
+            [
+                "8252c8e5db89057e"
+            ]
+        ]
+    },
+    {
+        "id": "c9f09cc65f0b2444",
+        "type": "debug",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Display URL for Hash",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "url",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "5fd38d639760baf0",
+        "type": "inject",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "CommunityID",
+                "v": "CommunityID",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "string_for_hash",
+        "payloadType": "flow",
+        "x": 290,
+        "y": 1280,
+        "wires": [
+            [
+                "1e839d65221f667e"
+            ]
+        ]
+    },
+    {
+        "id": "8252c8e5db89057e",
+        "type": "debug",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Display Hash",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "8f4d0d834820a4af",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Get Final",
+        "rules": [
+            {
+                "t": "set",
+                "p": "string_for_hash",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 1220,
+        "wires": [
+            [
+                "0b896450e400a5b0"
+            ]
+        ]
+    },
+    {
+        "id": "6719dc92ad0283ce",
+        "type": "json",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1090,
+        "y": 980,
+        "wires": [
+            [
+                "c6dc8ffc0b8100ac"
+            ]
+        ]
+    },
+    {
+        "id": "c6dc8ffc0b8100ac",
+        "type": "function",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Prompt for Chatgpt",
+        "func": "// msg.context =  JSON.stringify(msg.payload);\nmsg.payload = JSON.stringify(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 1060,
+        "wires": [
+            [
+                "c71f7c937c981b48"
+            ]
+        ]
+    },
+    {
+        "id": "60fb9f706e154a53",
+        "type": "simple-chatgpt",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Trigger Chatgpt",
+        "Token": "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",
+        "Model": "",
+        "SystemSetting": "generate the response without text",
+        "functions": "",
+        "functionsType": "str",
+        "function_call": "auto",
+        "function_callType": "str",
+        "x": 520,
+        "y": 1120,
+        "wires": [
+            [
+                "35a10ec3d3c23ad7"
+            ]
+        ]
+    },
+    {
+        "id": "c71f7c937c981b48",
+        "type": "simple-chatgpt",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Trigger Chatgpt",
+        "Token": "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",
+        "Model": "",
+        "SystemSetting": "1. From this Swagger file find the endpoint paths where the endpoint paths are having the property Produces = 'application/json' and sort them alphabetically. 2. Then Concatenate the enpoint paths separeted by ':' and prepare a string.",
+        "functions": "",
+        "functionsType": "str",
+        "function_call": "auto",
+        "function_callType": "str",
+        "x": 520,
+        "y": 1060,
+        "wires": [
+            [
+                "3abf8eb1f542f618",
+                "59b33e3f79377577"
+            ]
+        ]
+    },
+    {
+        "id": "3abf8eb1f542f618",
+        "type": "function",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Prompt for Chatgpt",
+        "func": "msg.payload = \"Encapsulate the response in <html><p> and </p></html>\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 1120,
+        "wires": [
+            [
+                "60fb9f706e154a53"
+            ]
+        ]
+    },
+    {
+        "id": "35a10ec3d3c23ad7",
+        "type": "html",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "property": "payload",
+        "outproperty": "payload",
+        "tag": "p",
+        "ret": "text",
+        "as": "single",
+        "x": 290,
+        "y": 1160,
+        "wires": [
+            [
+                "f9f34a0ccba78b32"
+            ]
+        ]
+    },
+    {
+        "id": "59b33e3f79377577",
+        "type": "debug",
+        "z": "2cfa3c0919b4ad10",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "f9f34a0ccba78b32",
+        "type": "function",
+        "z": "2cfa3c0919b4ad10",
+        "name": "function 4",
+        "func": "msg.payload = msg.payload[0];\nmsg.payload = msg.payload.replace(/[\\r\\n]/gm, '');\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 1200,
+        "wires": [
+            [
+                "0b896450e400a5b0",
+                "8f4d0d834820a4af"
+            ]
+        ]
+    },
+    {
+        "id": "956e6641dbbd7f3b",
+        "type": "http request",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://sandbox.api.sap.com/dateandtime/getCountryDateFormat?country=DE",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "APIKey",
+                "valueType": "other",
+                "valueValue": "bw5YdHoKtvtQ5KE5U6eyJPPiAjXQX8SU"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "accept",
+                "valueType": "other",
+                "valueValue": "plain/text"
+            }
+        ],
+        "x": 330,
+        "y": 1480,
+        "wires": [
+            [
+                "4b376b14402c8f78"
+            ]
+        ]
+    },
+    {
+        "id": "ef29195ae307e092",
+        "type": "inject",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 1480,
+        "wires": [
+            [
+                "956e6641dbbd7f3b"
+            ]
+        ]
+    },
+    {
+        "id": "4b376b14402c8f78",
+        "type": "function",
+        "z": "2cfa3c0919b4ad10",
+        "name": "function 3",
+        "func": "var value = msg.payload + ',' + \"x-abap-response-time\";\nmsg.payload = value;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 1480,
+        "wires": [
+            [
+                "35727fe9eea3f0e6"
+            ]
+        ]
+    },
+    {
+        "id": "773fa893fe88f194",
+        "type": "comment",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Task-5",
+        "info": "",
+        "x": 130,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "e7b9a2b09270c6f2",
+        "type": "comment",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Task-6",
+        "info": "",
+        "x": 130,
+        "y": 1600,
+        "wires": []
+    },
+    {
+        "id": "1c2d609468cba2ed",
+        "type": "inject",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Post Catergory",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\t   \"CategoryID\":147402,\t   \"CategoryName\":\"sabarna17\",\t   \"Description\" : \"August Developer Challenge\" \t}",
+        "payloadType": "jsonata",
+        "x": 180,
+        "y": 1640,
+        "wires": [
+            [
+                "aac349fb6a1f32c8"
+            ]
+        ]
+    },
+    {
+        "id": "aac349fb6a1f32c8",
+        "type": "http request",
+        "z": "2cfa3c0919b4ad10",
+        "name": "POST - /northbreeze/Categories",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://developer-challenge.cfapps.eu10.hana.ondemand.com/odata/v4/northbreeze/Categories",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 430,
+        "y": 1640,
+        "wires": [
+            [
+                "6a82cde0027ec22a"
+            ]
+        ]
+    },
+    {
+        "id": "6a82cde0027ec22a",
+        "type": "debug",
+        "z": "2cfa3c0919b4ad10",
+        "name": "POSTed Category Response ",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "fd62c5c937dd7f2b",
+        "type": "debug",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Get Category",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 1700,
+        "wires": []
+    },
+    {
+        "id": "b709378aff7b8373",
+        "type": "http request",
+        "z": "2cfa3c0919b4ad10",
+        "name": "GET- /northbreeze/Categories",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://developer-challenge.cfapps.eu10.hana.ondemand.com/odata/v4/northbreeze/Categories/154789?$select=CategoryID,CategoryName",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 430,
+        "y": 1700,
+        "wires": [
+            [
+                "08bab1f5f2f6f8c2",
+                "fd62c5c937dd7f2b"
+            ]
+        ]
+    },
+    {
+        "id": "ff4a8a0d12dbe0d9",
+        "type": "inject",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Get Catgory",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 1700,
+        "wires": [
+            [
+                "b709378aff7b8373"
+            ]
+        ]
+    },
+    {
+        "id": "a023730b0d6c3dc9",
+        "type": "debug",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Delete Response",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 1820,
+        "wires": []
+    },
+    {
+        "id": "27953072f769fcf5",
+        "type": "comment",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Task 7",
+        "info": "",
+        "x": 110,
+        "y": 1920,
+        "wires": []
+    },
+    {
+        "id": "4a2424b2cfda8a13",
+        "type": "comment",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Task 8",
+        "info": "",
+        "x": 110,
+        "y": 2060,
+        "wires": []
+    },
+    {
+        "id": "7475ad88496fc21c",
+        "type": "exec",
+        "z": "2cfa3c0919b4ad10",
+        "command": "cf8 login -a https://api.cf.us10-001.hana.ondemand.com/ ",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "cf8 login",
+        "x": 340,
+        "y": 2120,
+        "wires": [
+            [
+                "33b2331127e6a08a",
+                "39f4970bdc25e739"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "33b2331127e6a08a",
+        "type": "debug",
+        "z": "2cfa3c0919b4ad10",
+        "name": "CLI Output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 2120,
+        "wires": []
+    },
+    {
+        "id": "e7e06adf6c4a3434",
+        "type": "inject",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Login to CF",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": " -u sabarna17@gmail.com -p XXXXX",
+        "payloadType": "str",
+        "x": 150,
+        "y": 2120,
+        "wires": [
+            [
+                "7475ad88496fc21c"
+            ]
+        ]
+    },
+    {
+        "id": "39f4970bdc25e739",
+        "type": "exec",
+        "z": "2cfa3c0919b4ad10",
+        "command": "cf8 curl /v2/service_instances/8ef0816f-b462-4408-bca8-a041214981e1",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Get Service Instance Details",
+        "x": 540,
+        "y": 2180,
+        "wires": [
+            [
+                "79bace442b8ee448"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "79bace442b8ee448",
+        "type": "json",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 770,
+        "y": 2180,
+        "wires": [
+            [
+                "6924738d28d1f652"
+            ]
+        ]
+    },
+    {
+        "id": "6924738d28d1f652",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.entity.type",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 180,
+        "y": 2260,
+        "wires": [
+            [
+                "81f89c4a9c34d5d6"
+            ]
+        ]
+    },
+    {
+        "id": "0236336130d6681e",
+        "type": "http in",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "url": "/cis_service_entity_type",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 2180,
+        "wires": [
+            [
+                "39f4970bdc25e739"
+            ]
+        ]
+    },
+    {
+        "id": "f1914b46bcd109a4",
+        "type": "comment",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Task 9",
+        "info": "",
+        "x": 110,
+        "y": 2380,
+        "wires": []
+    },
+    {
+        "id": "9f0a2d04b4833c92",
+        "type": "exec",
+        "z": "2cfa3c0919b4ad10",
+        "command": "cf8 login -a https://api.cf.us10-001.hana.ondemand.com/ ",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 490,
+        "y": 2380,
+        "wires": [
+            [
+                "260ac67a790d3123",
+                "4f0d34aada29cd03"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "260ac67a790d3123",
+        "type": "debug",
+        "z": "2cfa3c0919b4ad10",
+        "name": "CLI Output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 2400,
+        "wires": []
+    },
+    {
+        "id": "157a0dc2511b6239",
+        "type": "inject",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Login to CF",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": " -u sabarna17@gmail.com -p Riya@1993",
+        "payloadType": "str",
+        "x": 150,
+        "y": 2460,
+        "wires": [
+            [
+                "4f0d34aada29cd03"
+            ]
+        ]
+    },
+    {
+        "id": "4f0d34aada29cd03",
+        "type": "exec",
+        "z": "2cfa3c0919b4ad10",
+        "command": "cf8 service-key cis-central cis-central-key",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "true",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Get Service Key of the CIS Instance",
+        "x": 430,
+        "y": 2460,
+        "wires": [
+            [
+                "e9d37542ec0b28dd"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "e914ba7db8d5a612",
+        "type": "json",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 810,
+        "y": 2460,
+        "wires": [
+            [
+                "835fc648b9b162c1"
+            ]
+        ]
+    },
+    {
+        "id": "835fc648b9b162c1",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.credentials.endpoints",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 2540,
+        "wires": [
+            [
+                "74b232b2e290a8a0"
+            ]
+        ]
+    },
+    {
+        "id": "74b232b2e290a8a0",
+        "type": "function",
+        "z": "2cfa3c0919b4ad10",
+        "name": "function 9",
+        "func": "var string = '';\nvar obj = msg.payload;\nvar keys = Object.keys(msg.payload);\nkeys.sort();\nfor (var i = 0; i < keys.length; i++) {\n    if(string){\n        string = string + ',' + keys[i];\n    }\n    else{\n        string = keys[i]\n    }\n}\n\n// for(var i=0; i<msg.payload.length;i++){\n//     let element = msg.payload[i];\n//     var keys = Object.keys(element);\n//  if( element.get.produces[0] === \"application/json\" ){\n//         if(string){\n//             string = keys[0] + \":\" + string;\n//         }\n//         else{\n//             string = keys[0]\n//         }\n//     }\n// } \nmsg.payload = string;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 2540,
+        "wires": [
+            [
+                "35e678c8245c111e"
+            ]
+        ]
+    },
+    {
+        "id": "6fe93fb053dd0205",
+        "type": "comment",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Task-0",
+        "info": "",
+        "x": 110,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "5668548b90731583",
+        "type": "inject",
+        "z": "2cfa3c0919b4ad10",
+        "name": "JSON Object - ODATA Transform ",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"transform\":[{\"filter\":{\"Discontinued\":false}},{\"aggregate\":{\"UnitsInStock\":{\"with\":\"sum\",\"as\":\"TotalStockQty\"}}}]}",
+        "payloadType": "json",
+        "x": 210,
+        "y": 280,
+        "wires": [
+            [
+                "1df7999889bb0497"
+            ]
+        ]
+    },
+    {
+        "id": "1df7999889bb0497",
+        "type": "npm",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Odata query Module ",
+        "func": "// NPM module exposed as variable, npm_module\nconsole.log(msg.payload.query);\nreturn npm_module.default(msg.payload);",
+        "npm_module": "odata-query",
+        "module_style": "custom",
+        "msg_payload": "return_val",
+        "function_name": "default",
+        "x": 460,
+        "y": 280,
+        "wires": [
+            [
+                "cc172ee128d70fec"
+            ]
+        ]
+    },
+    {
+        "id": "cc172ee128d70fec",
+        "type": "function",
+        "z": "2cfa3c0919b4ad10",
+        "name": "North Breeze URL with Query",
+        "func": "var northbreezeurl = 'https://developer-challenge.cfapps.eu10.hana.ondemand.com/odata/v4/northbreeze/Products'\n\nmsg.url = northbreezeurl + msg.payload\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 210,
+        "y": 320,
+        "wires": [
+            [
+                "caf164f1d8a15f28"
+            ]
+        ]
+    },
+    {
+        "id": "caf164f1d8a15f28",
+        "type": "http request",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 430,
+        "y": 320,
+        "wires": [
+            [
+                "b63d697cd0bd4b4f"
+            ]
+        ]
+    },
+    {
+        "id": "b63d697cd0bd4b4f",
+        "type": "function",
+        "z": "2cfa3c0919b4ad10",
+        "name": "TotalStockQty",
+        "func": "msg.payload = msg.payload.value[0].TotalStockQty;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 320,
+        "wires": [
+            [
+                "4b7bc704f0e659b4"
+            ]
+        ]
+    },
+    {
+        "id": "b0fb667bed8d412c",
+        "type": "comment",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Task-2",
+        "info": "",
+        "x": 110,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "5b77e69bcb9cc453",
+        "type": "comment",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Task-1",
+        "info": "",
+        "x": 110,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "aa9d5c058e12cb14",
+        "type": "http request",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Northwind.svc",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://services.odata.org/V4/Northwind/Northwind.svc/",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 300,
+        "y": 180,
+        "wires": [
+            [
+                "8cdfea82466d1360"
+            ]
+        ]
+    },
+    {
+        "id": "0042c3382e6d95f8",
+        "type": "inject",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Task-1",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 180,
+        "wires": [
+            [
+                "aa9d5c058e12cb14"
+            ]
+        ]
+    },
+    {
+        "id": "8cdfea82466d1360",
+        "type": "function",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Sort Entities and Concat SeparatedBy \",\"",
+        "func": "var allEntities = [];\nvar entitystring = '';\n\nmsg.payload.value.forEach(element => {\n    if(element.kind === 'EntitySet'){\n        allEntities.push(element.name);\n    }\n});\nallEntities.sort();\n\nallEntities.forEach(element =>{\n    if(entitystring){\n        entitystring = entitystring + ',' + element;\n    }\n    else{\n        entitystring = element;\n    }\n});\nmsg.payload = entitystring;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 180,
+        "wires": [
+            [
+                "1eb37dacd2cd559b"
+            ]
+        ]
+    },
+    {
+        "id": "367c6886e2c19073",
+        "type": "inject",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Task-0",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "this-is-the-year-of-the-api",
+        "payloadType": "str",
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "158cfa572054c5dd"
+            ]
+        ]
+    },
+    {
+        "id": "06e58c6487ae04ef",
+        "type": "debug",
+        "z": "2cfa3c0919b4ad10",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "be96bf49a59eb4d8",
+        "type": "file in",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "filename": "C:\\Users\\sabar\\Downloads\\DateAndTime.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 260,
+        "y": 780,
+        "wires": [
+            [
+                "13477fddc92077ca"
+            ]
+        ]
+    },
+    {
+        "id": "b78fa1044ab40799",
+        "type": "inject",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Read DateAndTime Paths and Create the String for Hash",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 270,
+        "y": 740,
+        "wires": [
+            [
+                "be96bf49a59eb4d8"
+            ]
+        ]
+    },
+    {
+        "id": "13477fddc92077ca",
+        "type": "json",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 130,
+        "y": 840,
+        "wires": [
+            [
+                "d0172fe773a39967"
+            ]
+        ]
+    },
+    {
+        "id": "d0172fe773a39967",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.paths",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 840,
+        "wires": [
+            [
+                "4c31af06b1643566"
+            ]
+        ]
+    },
+    {
+        "id": "4c31af06b1643566",
+        "type": "function",
+        "z": "2cfa3c0919b4ad10",
+        "name": "function 2",
+        "func": "var string = '';\nvar obj = msg.payload;\nvar keys = Object.keys(msg.payload);\nkeys.sort();\nfor (var i = 0; i < keys.length; i++) {\n  if(obj[keys[i]].get.produces[0] === 'application/json'){\n        if(string){\n            string = string + ':' + keys[i];\n        }\n        else{\n            string = keys[i]\n        }      \n  }\n}\n\n// for(var i=0; i<msg.payload.length;i++){\n//     let element = msg.payload[i];\n//     var keys = Object.keys(element);\n//  if( element.get.produces[0] === \"application/json\" ){\n//         if(string){\n//             string = keys[0] + \":\" + string;\n//         }\n//         else{\n//             string = keys[0]\n//         }\n//     }\n// } \nmsg.payload = string;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 840,
+        "wires": [
+            [
+                "bc6780c583c694da",
+                "06e58c6487ae04ef"
+            ]
+        ]
+    },
+    {
+        "id": "a99726702547d609",
+        "type": "comment",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Task-4-New",
+        "info": "",
+        "x": 110,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "f09b97da2c4490c8",
+        "type": "subflow:2676c647950e6a50",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "env": [
+            {
+                "name": "CommunityID",
+                "value": "se38",
+                "type": "str"
+            },
+            {
+                "name": "topic",
+                "value": "Task-4",
+                "type": "str"
+            }
+        ],
+        "x": 940,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "bc6780c583c694da",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "string_for_hash",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 710,
+        "y": 760,
+        "wires": [
+            [
+                "f09b97da2c4490c8"
+            ]
+        ]
+    },
+    {
+        "id": "35727fe9eea3f0e6",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "string_for_hash",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 710,
+        "y": 1480,
+        "wires": [
+            [
+                "8eabfc9f273725f3"
+            ]
+        ]
+    },
+    {
+        "id": "8eabfc9f273725f3",
+        "type": "subflow:2676c647950e6a50",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "env": [
+            {
+                "name": "topic",
+                "value": "Task-5",
+                "type": "str"
+            }
+        ],
+        "x": 920,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "08bab1f5f2f6f8c2",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "string_for_hash",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 1740,
+        "wires": [
+            [
+                "771c694c17cea749"
+            ]
+        ]
+    },
+    {
+        "id": "771c694c17cea749",
+        "type": "subflow:2676c647950e6a50",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "env": [
+            {
+                "name": "topic",
+                "value": "Task-6",
+                "type": "str"
+            }
+        ],
+        "x": 900,
+        "y": 1740,
+        "wires": []
+    },
+    {
+        "id": "be7081f8e6726bd3",
+        "type": "http request",
+        "z": "2cfa3c0919b4ad10",
+        "name": "DELETE - /northbreeze/Categories",
+        "method": "DELETE",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://developer-challenge.cfapps.eu10.hana.ondemand.com/odata/v4/northbreeze/Categories/147402",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 440,
+        "y": 1820,
+        "wires": [
+            [
+                "a023730b0d6c3dc9"
+            ]
+        ]
+    },
+    {
+        "id": "15e2d295f9464ca8",
+        "type": "inject",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Delete Catgory",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 1820,
+        "wires": [
+            [
+                "be7081f8e6726bd3"
+            ]
+        ]
+    },
+    {
+        "id": "53ead5c96fe08174",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "string_for_hash",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 1960,
+        "wires": [
+            [
+                "a99d8004cfa85fc8"
+            ]
+        ]
+    },
+    {
+        "id": "a99d8004cfa85fc8",
+        "type": "subflow:2676c647950e6a50",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "env": [
+            {
+                "name": "topic",
+                "value": "Task-7",
+                "type": "str"
+            }
+        ],
+        "x": 620,
+        "y": 1960,
+        "wires": []
+    },
+    {
+        "id": "61dfd7443611b4ff",
+        "type": "inject",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "36",
+        "payloadType": "str",
+        "x": 150,
+        "y": 1960,
+        "wires": [
+            [
+                "53ead5c96fe08174"
+            ]
+        ]
+    },
+    {
+        "id": "81f89c4a9c34d5d6",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "string_for_hash",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 2260,
+        "wires": [
+            [
+                "eed89904c31d05fc"
+            ]
+        ]
+    },
+    {
+        "id": "eed89904c31d05fc",
+        "type": "subflow:2676c647950e6a50",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "env": [
+            {
+                "name": "topic",
+                "value": "Task-8",
+                "type": "str"
+            }
+        ],
+        "x": 680,
+        "y": 2260,
+        "wires": []
+    },
+    {
+        "id": "35e678c8245c111e",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "string_for_hash",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 710,
+        "y": 2540,
+        "wires": [
+            [
+                "37e64b4a1d4a3d89"
+            ]
+        ]
+    },
+    {
+        "id": "37e64b4a1d4a3d89",
+        "type": "subflow:2676c647950e6a50",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "env": [
+            {
+                "name": "topic",
+                "value": "Task-9",
+                "type": "str"
+            }
+        ],
+        "x": 920,
+        "y": 2540,
+        "wires": []
+    },
+    {
+        "id": "e9d37542ec0b28dd",
+        "type": "switch",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 670,
+        "y": 2460,
+        "wires": [
+            [
+                "e914ba7db8d5a612"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "4c5e2d36fce0537f",
+        "type": "comment",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Task 10",
+        "info": "",
+        "x": 110,
+        "y": 2660,
+        "wires": []
+    },
+    {
+        "id": "6bf9023c64edb08e",
+        "type": "oauth2",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "container": "oauth2Response",
+        "grant_type": "password",
+        "access_token_url": "https://afa6fcfftrial-ga.authentication.eu10.hana.ondemand.com/oauth/token",
+        "authorization_endpoint": "",
+        "redirect_uri": "/oauth2/redirect_uri",
+        "open_authentication": "",
+        "username": "sabarna17@gmail.com",
+        "password": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx",
+        "client_id": "sb-ut-649825c8-b38d-4ba7-9a33-b531ef01254e-clone!b266629|cis-central!b14",
+        "client_secret": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx",
+        "scope": "",
+        "proxy": "",
+        "senderr": false,
+        "client_credentials_in_body": false,
+        "rejectUnauthorized": true,
+        "headers": {},
+        "x": 290,
+        "y": 2700,
+        "wires": [
+            [
+                "b0eab19fa2ef0f50"
+            ]
+        ]
+    },
+    {
+        "id": "b6054db93d1039b7",
+        "type": "inject",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Inject",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 2700,
+        "wires": [
+            [
+                "6bf9023c64edb08e"
+            ]
+        ]
+    },
+    {
+        "id": "b0eab19fa2ef0f50",
+        "type": "function",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Math.Round(expires_in / 3600)",
+        "func": "var hours = Math.round(msg.oauth2Response.expires_in / 3600);\nmsg.payload = hours;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 2700,
+        "wires": [
+            [
+                "5c441d17f3eccd34"
+            ]
+        ]
+    },
+    {
+        "id": "5c441d17f3eccd34",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "string_for_hash",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 2700,
+        "wires": [
+            [
+                "b8d3b2cba10c11cf"
+            ]
+        ]
+    },
+    {
+        "id": "b8d3b2cba10c11cf",
+        "type": "subflow:2676c647950e6a50",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "env": [
+            {
+                "name": "topic",
+                "value": "Task-10",
+                "type": "str"
+            }
+        ],
+        "x": 980,
+        "y": 2700,
+        "wires": []
+    },
+    {
+        "id": "279995ce918f6a5e",
+        "type": "comment",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Task 11",
+        "info": "",
+        "x": 110,
+        "y": 2800,
+        "wires": []
+    },
+    {
+        "id": "3d1bf58f992d900a",
+        "type": "oauth2",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "container": "payload",
+        "grant_type": "password",
+        "access_token_url": "https://afa6fcfftrial-ga.authentication.eu10.hana.ondemand.com/oauth/token",
+        "authorization_endpoint": "",
+        "redirect_uri": "/oauth2/redirect_uri",
+        "open_authentication": "",
+        "username": "sabarna17@gmail.com",
+        "password": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx",
+        "client_id": "sb-ut-649825c8-b38d-4ba7-9a33-b531ef01254e-clone!b266629|cis-central!b14",
+        "client_secret": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx",
+        "scope": "",
+        "proxy": "",
+        "senderr": false,
+        "client_credentials_in_body": false,
+        "rejectUnauthorized": true,
+        "headers": {},
+        "x": 290,
+        "y": 2840,
+        "wires": [
+            [
+                "751f7848c37ab1bb"
+            ]
+        ]
+    },
+    {
+        "id": "a823b4d46fe0e065",
+        "type": "inject",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Inject",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 2840,
+        "wires": [
+            [
+                "3d1bf58f992d900a"
+            ]
+        ]
+    },
+    {
+        "id": "751f7848c37ab1bb",
+        "type": "npm",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "func": "return { \n    'header': npm_module(msg.payload.access_token, { header: true }), \n    'body': npm_module(msg.payload.access_token) \n};",
+        "npm_module": "jwt-decode",
+        "module_style": "custom",
+        "msg_payload": "return_val",
+        "function_name": "jwt_decode",
+        "x": 410,
+        "y": 2840,
+        "wires": [
+            [
+                "db858138968b06ae"
+            ]
+        ]
+    },
+    {
+        "id": "db858138968b06ae",
+        "type": "function",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Set String URL",
+        "func": "var mystring = msg.payload.header.alg + \":\" + msg.payload.header.typ + \":\" + msg.payload.body.scope.length;\nmsg.payload = mystring;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 2840,
+        "wires": [
+            [
+                "a2e2870c5a549764"
+            ]
+        ]
+    },
+    {
+        "id": "c5f70d74df440fd7",
+        "type": "comment",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Task 12",
+        "info": "",
+        "x": 110,
+        "y": 2920,
+        "wires": []
+    },
+    {
+        "id": "56b154d1c2bec882",
+        "type": "http request",
+        "z": "2cfa3c0919b4ad10",
+        "name": "/accounts/v1/directories/{directoryGUID}",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://accounts-service.cfapps.eu10.hana.ondemand.com/accounts/v1/directories/d88f572c-b3cb-4036-984f-8fabe6aaadb2",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Authorization",
+                "keyValue": "",
+                "valueType": "msg",
+                "valueValue": "payload.access_token"
+            }
+        ],
+        "x": 760,
+        "y": 2960,
+        "wires": [
+            [
+                "b4dea9587ac37de3"
+            ]
+        ]
+    },
+    {
+        "id": "93495fab75e59035",
+        "type": "inject",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "directoryGUID",
+                "v": "d88f572c-b3cb-4036-984f-8fabe6aaadb2",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 2960,
+        "wires": [
+            [
+                "7d011af3e569a968"
+            ]
+        ]
+    },
+    {
+        "id": "7c2ca9942cbf7368",
+        "type": "function",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Set URL / Authorization",
+        "func": "msg.url = \"https://accounts-service.cfapps.eu10.hana.ondemand.com\" + \n        \"/accounts/v1/directories/\" + msg.directoryGUID;\nmsg.payload.access_token = 'Bearer ' + msg.payload.access_token \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 2960,
+        "wires": [
+            [
+                "56b154d1c2bec882"
+            ]
+        ]
+    },
+    {
+        "id": "7d011af3e569a968",
+        "type": "oauth2",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "container": "payload",
+        "grant_type": "password",
+        "access_token_url": "https://afa6fcfftrial-ga.authentication.eu10.hana.ondemand.com/oauth/token",
+        "authorization_endpoint": "",
+        "redirect_uri": "/oauth2/redirect_uri",
+        "open_authentication": "",
+        "username": "sabarna17@gmail.com",
+        "password": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "client_id": "sb-ut-649825c8-b38d-4ba7-9a33-b531ef01254e-clone!b266629|cis-central!b14",
+        "client_secret": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx",
+        "scope": "",
+        "proxy": "",
+        "senderr": false,
+        "client_credentials_in_body": false,
+        "rejectUnauthorized": true,
+        "headers": {},
+        "x": 290,
+        "y": 2960,
+        "wires": [
+            [
+                "7c2ca9942cbf7368"
+            ]
+        ]
+    },
+    {
+        "id": "7b8fbb90f0126ee2",
+        "type": "debug",
+        "z": "2cfa3c0919b4ad10",
+        "name": "debug 16",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 3020,
+        "wires": []
+    },
+    {
+        "id": "b4dea9587ac37de3",
+        "type": "function",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Convert the string",
+        "func": "var string = msg.payload.displayName + \":\" + msg.payload.directoryType;\nmsg.payload = string;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 3020,
+        "wires": [
+            [
+                "7b79945ed43bbb27"
+            ]
+        ]
+    },
+    {
+        "id": "70330ff66c4db999",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "Get Final String",
+        "rules": [
+            {
+                "t": "set",
+                "p": "string_for_hash",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 3020,
+        "wires": [
+            [
+                "7b8fbb90f0126ee2"
+            ]
+        ]
+    },
+    {
+        "id": "a2e2870c5a549764",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "string_for_hash",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 2840,
+        "wires": [
+            [
+                "d28d24dcf638476e"
+            ]
+        ]
+    },
+    {
+        "id": "d28d24dcf638476e",
+        "type": "subflow:2676c647950e6a50",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "env": [
+            {
+                "name": "topic",
+                "value": "Task-10",
+                "type": "str"
+            }
+        ],
+        "x": 980,
+        "y": 2840,
+        "wires": []
+    },
+    {
+        "id": "7b79945ed43bbb27",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "string_for_hash",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 3080,
+        "wires": [
+            [
+                "3e6c343001c825e3"
+            ]
+        ]
+    },
+    {
+        "id": "3e6c343001c825e3",
+        "type": "subflow:2676c647950e6a50",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "env": [
+            {
+                "name": "CommunityID",
+                "value": "bztoy",
+                "type": "str"
+            },
+            {
+                "name": "topic",
+                "value": "Task-10",
+                "type": "str"
+            }
+        ],
+        "x": 900,
+        "y": 3080,
+        "wires": []
+    },
+    {
+        "id": "158cfa572054c5dd",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "string_for_hash",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 60,
+        "wires": [
+            [
+                "89f9427b496e29fe"
+            ]
+        ]
+    },
+    {
+        "id": "89f9427b496e29fe",
+        "type": "subflow:2676c647950e6a50",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "env": [
+            {
+                "name": "topic",
+                "value": "Task-0",
+                "type": "str"
+            }
+        ],
+        "x": 700,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "1eb37dacd2cd559b",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "string_for_hash",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 180,
+        "wires": [
+            [
+                "8242831975adebe8"
+            ]
+        ]
+    },
+    {
+        "id": "8242831975adebe8",
+        "type": "subflow:2676c647950e6a50",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "env": [
+            {
+                "name": "topic",
+                "value": "Task-1",
+                "type": "str"
+            }
+        ],
+        "x": 880,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "4b7bc704f0e659b4",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "string_for_hash",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 910,
+        "y": 320,
+        "wires": [
+            [
+                "d11f1b647b23b8a9"
+            ]
+        ]
+    },
+    {
+        "id": "d11f1b647b23b8a9",
+        "type": "subflow:2676c647950e6a50",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "env": [
+            {
+                "name": "topic",
+                "value": "Task-2",
+                "type": "str"
+            }
+        ],
+        "x": 900,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "a917f57f023e8a1b",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "string_for_hash",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 520,
+        "wires": [
+            [
+                "112e190c1992d705"
+            ]
+        ]
+    },
+    {
+        "id": "112e190c1992d705",
+        "type": "subflow:2676c647950e6a50",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "env": [
+            {
+                "name": "topic",
+                "value": "Task-3",
+                "type": "str"
+            }
+        ],
+        "x": 880,
+        "y": 580,
+        "wires": []
+    }
+]
