@@ -7,6 +7,9 @@ In this Git-Repo you can get the exclusive content on [Node-Red](http://nodered.
 
 ![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/897aa5cb-b247-4d3f-8737-da68e4d23707)
 
+## If you are New to Node-RED
+Node-Red is a very powerful No-code-low-code Open Source platform Built on Node.JS to develop any low/medium complex applications. 
+Please go through the [features](https://nodered.org/#features) for details.
 
 
 
