@@ -65,10 +65,22 @@ Note that you can also delete using the Delete Category Inject. Solution for Tas
 ## [Task-8](https://groups.community.sap.com/t5/application-development-discussions/sap-developer-challenge-apis-task-8-create-an-instance-of-the-sap-cloud/m-p/280681)
 ![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/39a7650b-277a-4ef4-94ed-7a233b0ccb37)
 
-## [Task-9]()
+## [Task-9](https://groups.community.sap.com/t5/application-development-discussions/sap-developer-challenge-apis-task-9-create-a-service-key-for-api-endpoints/m-p/281337)
 ![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/445c416d-f4cf-4b66-a66f-89a0b0683a61)
 
-## [Task-10]()
-![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/c7c4e5f9-28ef-46c7-8858-d5258b79c258)
+## [Task-10](https://groups.community.sap.com/t5/application-development-discussions/sap-developer-challenge-apis-task-10-request-an-oauth-access-token/m-p/281933)
+Note that the Configuration of the OAuth2 has to be done according to the service-key generated value, mentioned in the Task.
+![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/91a1319a-5550-43a0-afcc-37a6e3b55c80)
+
+## [Task-11](https://groups.community.sap.com/t5/application-development-discussions/sap-developer-challenge-apis-task-11-examine-the-access-token-for-scopes/m-p/282366)
+Here Note that, I have configured a npm Node which looks like ->
+
+![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/80062f6e-c852-4a6c-8cc4-89bd50dd91f3)
+
+And the flow is ->
+![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/918ed03a-927f-4fc2-8471-31a522744756)
+
+## [Task-12](https://groups.community.sap.com/t5/application-development-discussions/sap-developer-challenge-apis-task-12-use-the-access-token-to-call-the-api/td-p/283202)
+![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/582171dd-8fc2-4902-976f-d2a805a42fb9)
 
 
