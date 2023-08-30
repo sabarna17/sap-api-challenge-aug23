@@ -39,6 +39,7 @@ Add a new node to your Node-Red environment - [node-red-contrib-npm](https://www
 Your Task-2 Configuration will be ->
 ![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/a2a75e45-0f8d-4f99-a226-2dd33793ca54)
 Also note that your npm node has to be configured as below -
+
 ![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/6e0915b8-1832-405c-8164-2a908cc011cb)
 
 ## [Task-3](https://groups.community.sap.com/t5/application-development-discussions/sap-developer-challenge-apis-task-3-have-a-northbreeze-product-selected-for/m-p/277972#M2727)
@@ -46,6 +47,6 @@ Your Task-3 solution will be ->
 ![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/75f6ed9d-8bbc-47c5-87d0-ce4ec7e3df8e)
 
 
-## [Task-4]()
-
+## [Task-4](https://groups.community.sap.com/t5/application-development-discussions/sap-developer-challenge-apis-task-4-discover-the-date-and-time-api-package/m-p/278745)
+Your Task-4 Solution ->
 ![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/2c0da372-07cb-4b1b-84a9-c3da1783bef7)
