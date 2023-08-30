@@ -1,4 +1,4 @@
-![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/7dc45d71-0736-4b19-bbdb-d0e938882940)# sap-api-challenge-aug23
+# sap-api-challenge-aug23
 Solution SAP API Challenge by [qmacro](https://twitter.com/qmacro) - [DJ Adams](https://people.sap.com/dj.adams.sap) in a [Node-Red](https://github.com/node-red) way...
 
 Please visit the Wonderful SAP-API Challenege Series. https://blogs.sap.com/2023/08/01/sap-developer-challenge-apis/
@@ -11,8 +11,8 @@ In this Git-Repo you can get the exclusive content on [Node-Red](http://nodered.
 ## If you are New to Node-RED
 Node-Red is a very powerful No-code-low-code Open Source platform Built on Node.JS to develop any low/medium complex applications. 
 Please go through the [features](https://nodered.org/#features) for details.
-For Installation of Node-Red please visit - https://nodered.org/docs/getting-started/local.
-You can also explore the SAP Cloud options - https://blogs.sap.com/2020/09/29/all-about-node-red-deployment-in-sap-cloud-foundry/
+## For Installation of Node-Red please visit - https://nodered.org/docs/getting-started/local.
+## You can also explore the SAP Cloud options - https://blogs.sap.com/2020/09/29/all-about-node-red-deployment-in-sap-cloud-foundry/
 
 ## [Task-0](https://groups.community.sap.com/t5/application-development/sap-developer-challenge-apis-task-0-learn-to-share-your-task/m-p/276058#M2319)
 Create a Subflow. Import the flows from file - [SAP-API Hash](https://github.com/sabarna17/sap-api-challenge-aug23/blob/main/SAP-API%20Hash.json)
@@ -50,3 +50,25 @@ Your Task-3 solution will be ->
 ## [Task-4](https://groups.community.sap.com/t5/application-development-discussions/sap-developer-challenge-apis-task-4-discover-the-date-and-time-api-package/m-p/278745)
 Your Task-4 Solution ->
 ![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/2c0da372-07cb-4b1b-84a9-c3da1783bef7)
+
+## [Task-5](https://groups.community.sap.com/t5/application-development-discussions/sap-developer-challenge-apis-task-5-call-the-country-date-format-api/td-p/279160)
+Solution Task-5 ->
+![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/2040dbe0-0db3-4ab5-96a6-0dea0e32f6f1)
+
+## [Task-6](https://groups.community.sap.com/t5/application-development-discussions/sap-developer-challenge-apis-task-6-create-a-new-northbreeze-category/m-p/279812)
+Note that you can also delete using the Delete Category Inject. Solution for Task 6 ->
+![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/9fb44c5f-2e02-48e8-aa83-560331a14698)
+
+## [Task-7](https://groups.community.sap.com/t5/application-development-discussions/sap-developer-challenge-apis-task-7-create-a-new-directory-in-an-sap-btp/m-p/280341)
+![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/01da1e18-4558-4ba4-8d9c-23afb9919b88)
+
+## [Task-8](https://groups.community.sap.com/t5/application-development-discussions/sap-developer-challenge-apis-task-8-create-an-instance-of-the-sap-cloud/m-p/280681)
+![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/39a7650b-277a-4ef4-94ed-7a233b0ccb37)
+
+## [Task-9]()
+![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/445c416d-f4cf-4b66-a66f-89a0b0683a61)
+
+## [Task-10]()
+![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/c7c4e5f9-28ef-46c7-8858-d5258b79c258)
+
+
