@@ -397,23 +397,6 @@
         "wires": []
     },
     {
-        "id": "0b896450e400a5b0",
-        "type": "debug",
-        "z": "2cfa3c0919b4ad10",
-        "name": "debug 7",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 960,
-        "y": 1160,
-        "wires": []
-    },
-    {
         "id": "3cc98f3f3ceeb68b",
         "type": "file in",
         "z": "2cfa3c0919b4ad10",
@@ -459,225 +442,6 @@
         "wires": [
             [
                 "3cc98f3f3ceeb68b"
-            ]
-        ]
-    },
-    {
-        "id": "9419f863d53d4afc",
-        "type": "inject",
-        "z": "2cfa3c0919b4ad10",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "sabarna17",
-        "payloadType": "str",
-        "x": 260,
-        "y": 920,
-        "wires": [
-            [
-                "21c457a5744fde61"
-            ]
-        ]
-    },
-    {
-        "id": "21c457a5744fde61",
-        "type": "change",
-        "z": "2cfa3c0919b4ad10",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "CommunityID",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 500,
-        "y": 920,
-        "wires": [
-            [
-                "9c069863dbd63036"
-            ]
-        ]
-    },
-    {
-        "id": "9c069863dbd63036",
-        "type": "debug",
-        "z": "2cfa3c0919b4ad10",
-        "name": "Set Community ID",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 730,
-        "y": 920,
-        "wires": []
-    },
-    {
-        "id": "1e839d65221f667e",
-        "type": "function",
-        "z": "2cfa3c0919b4ad10",
-        "name": "Modify URL for Hashing",
-        "func": "msg.url = \"https://developer-challenge.cfapps.eu10.hana.ondemand.com/v1/hash(value='\" + msg.payload + \"')\";\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 530,
-        "y": 1280,
-        "wires": [
-            [
-                "f4e356e17a570368",
-                "c9f09cc65f0b2444"
-            ]
-        ]
-    },
-    {
-        "id": "f4e356e17a570368",
-        "type": "http request",
-        "z": "2cfa3c0919b4ad10",
-        "name": "Call GET Method to Hash your String",
-        "method": "GET",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [
-            {
-                "keyType": "other",
-                "keyValue": "CommunityID",
-                "valueType": "msg",
-                "valueValue": "CommunityID"
-            }
-        ],
-        "x": 830,
-        "y": 1280,
-        "wires": [
-            [
-                "8252c8e5db89057e"
-            ]
-        ]
-    },
-    {
-        "id": "c9f09cc65f0b2444",
-        "type": "debug",
-        "z": "2cfa3c0919b4ad10",
-        "name": "Display URL for Hash",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "url",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 520,
-        "y": 1340,
-        "wires": []
-    },
-    {
-        "id": "5fd38d639760baf0",
-        "type": "inject",
-        "z": "2cfa3c0919b4ad10",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            },
-            {
-                "p": "CommunityID",
-                "v": "CommunityID",
-                "vt": "flow"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "string_for_hash",
-        "payloadType": "flow",
-        "x": 290,
-        "y": 1280,
-        "wires": [
-            [
-                "1e839d65221f667e"
-            ]
-        ]
-    },
-    {
-        "id": "8252c8e5db89057e",
-        "type": "debug",
-        "z": "2cfa3c0919b4ad10",
-        "name": "Display Hash",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 790,
-        "y": 1340,
-        "wires": []
-    },
-    {
-        "id": "8f4d0d834820a4af",
-        "type": "change",
-        "z": "2cfa3c0919b4ad10",
-        "name": "Get Final",
-        "rules": [
-            {
-                "t": "set",
-                "p": "string_for_hash",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 680,
-        "y": 1220,
-        "wires": [
-            [
-                "0b896450e400a5b0"
             ]
         ]
     },
@@ -826,8 +590,7 @@
         "y": 1200,
         "wires": [
             [
-                "0b896450e400a5b0",
-                "8f4d0d834820a4af"
+                "11164d298c5e3fd3"
             ]
         ]
     },
@@ -2861,6 +2624,54 @@
         ],
         "x": 880,
         "y": 580,
+        "wires": []
+    },
+    {
+        "id": "11164d298c5e3fd3",
+        "type": "change",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "string_for_hash",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 1200,
+        "wires": [
+            [
+                "d5a21b58a6801f6c"
+            ]
+        ]
+    },
+    {
+        "id": "d5a21b58a6801f6c",
+        "type": "subflow:2676c647950e6a50",
+        "z": "2cfa3c0919b4ad10",
+        "name": "",
+        "env": [
+            {
+                "name": "CommunityID",
+                "value": "se38",
+                "type": "str"
+            },
+            {
+                "name": "topic",
+                "value": "Task-4",
+                "type": "str"
+            }
+        ],
+        "x": 780,
+        "y": 1200,
         "wires": []
     }
 ]
