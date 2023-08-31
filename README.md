@@ -88,7 +88,7 @@ And the flow is ->
 ![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/582171dd-8fc2-4902-976f-d2a805a42fb9)
 
 ## ChatGPT with Node-Red
-Those who have not seen till now, there is a extra solution given for Task-4 by prompting the CHATGPT to query a JSON Object to get the required output.
+Those who have not noticed till now, there is a extra solution given for Task-4 by prompting the CHATGPT to query a JSON Object to get the required output.
 Please let me know about your thoughts. 
 ![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/08ec0ae6-12c0-4b6f-a02e-45b5554d7020)
 
