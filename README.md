@@ -1,7 +1,8 @@
 # sap-api-challenge-aug23
 Solution SAP API Challenge by [qmacro](https://twitter.com/qmacro) - [DJ Adams](https://people.sap.com/dj.adams.sap) in a [Node-Red](https://github.com/node-red) way...
 
-Please visit the Wonderful SAP-API Challenge Series. https://blogs.sap.com/2023/08/01/sap-developer-challenge-apis/
+Please visit the Wonderful SAP-API Challenge Series. [SAP-API-Challenege-AUG23](https://blogs.sap.com/2023/08/01/sap-developer-challenge-apis/)
+
 It's a LoL - lots of Learnings....
 
 In this Git-Repo you can get exclusive content on [Node-Red](http://nodered.org/docs) to solve Challenge Tasks.
