@@ -43,8 +43,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 580,
-        "y": 40,
+        "x": 540,
+        "y": 240,
         "wires": [
             [
                 "9404eed595446ba1",
@@ -75,8 +75,8 @@
                 "valueValue": "CommunityID"
             }
         ],
-        "x": 890,
-        "y": 40,
+        "x": 870,
+        "y": 260,
         "wires": [
             [
                 "0b6bdd7085e2d059"
@@ -96,8 +96,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 960,
-        "y": 160,
+        "x": 780,
+        "y": 180,
         "wires": []
     },
     {
@@ -141,8 +141,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1030,
-        "y": 100,
+        "x": 890,
+        "y": 320,
         "wires": []
     },
     {
@@ -198,12 +198,12 @@
                 "t": "null"
             },
             {
-                "t": "neq",
+                "t": "eq",
                 "v": "",
                 "vt": "str"
             },
             {
-                "t": "eq",
+                "t": "neq",
                 "v": "",
                 "vt": "str"
             }
@@ -218,10 +218,10 @@
                 "1b0cccf6856fdcb6"
             ],
             [
-                "cb5f9176afe220eb"
+                "1b0cccf6856fdcb6"
             ],
             [
-                "1b0cccf6856fdcb6"
+                "cb5f9176afe220eb"
             ]
         ]
     },
@@ -238,8 +238,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 490,
-        "y": 140,
+        "x": 730,
+        "y": 60,
         "wires": []
     },
     {
@@ -261,21 +261,13 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 520,
-        "y": 100,
+        "x": 540,
+        "y": 60,
         "wires": [
             [
                 "e9045c1cb34131ed"
             ]
         ]
-    },
-    {
-        "id": "2cfa3c0919b4ad10",
-        "type": "tab",
-        "label": "API Challenege",
-        "disabled": false,
-        "info": "",
-        "env": []
     },
     {
         "id": "88140e60d62d7aa9",
@@ -729,7 +721,7 @@
         "type": "simple-chatgpt",
         "z": "2cfa3c0919b4ad10",
         "name": "Trigger Chatgpt",
-        "Token": "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",
+        "Token": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
         "Model": "",
         "SystemSetting": "generate the response without text",
         "functions": "",
@@ -749,7 +741,7 @@
         "type": "simple-chatgpt",
         "z": "2cfa3c0919b4ad10",
         "name": "Trigger Chatgpt",
-        "Token": "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",
+        "Token": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
         "Model": "",
         "SystemSetting": "1. From this Swagger file find the endpoint paths where the endpoint paths are having the property Produces = 'application/json' and sort them alphabetically. 2. Then Concatenate the enpoint paths separeted by ':' and prepare a string.",
         "functions": "",
@@ -2718,8 +2710,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 430,
-        "y": 60,
+        "x": 410,
+        "y": 80,
         "wires": [
             [
                 "89f9427b496e29fe"
@@ -2739,7 +2731,7 @@
             }
         ],
         "x": 700,
-        "y": 60,
+        "y": 80,
         "wires": []
     },
     {
@@ -2761,7 +2753,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 890,
+        "x": 850,
         "y": 180,
         "wires": [
             [
@@ -2781,8 +2773,8 @@
                 "type": "str"
             }
         ],
-        "x": 880,
-        "y": 240,
+        "x": 1080,
+        "y": 180,
         "wires": []
     },
     {
