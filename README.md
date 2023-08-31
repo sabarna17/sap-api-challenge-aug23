@@ -6,8 +6,8 @@ It's a LoL - lots of Learnings....
 
 In this Git-Repo you can get exclusive content on [Node-Red](http://nodered.org/docs) to solve Challenge Tasks.
 
-![image](https://github.com/sabarna17/sap-api-challenge-aug23/blob/main/Untitled%20Diagram.drawio)
-
+![image]([https://github.com/sabarna17/sap-api-challenge-aug23/blob/main/Untitled%20Diagram.drawio](https://github.com/sabarna17/sap-api-challenge-aug23/blob/main/SAP-API-Challenege.gif))
+![img](https://github.com/sabarna17/sap-api-challenge-aug23/blob/main/SAP-API-Challenege.gif)
 
 
 ## Prerequisites
