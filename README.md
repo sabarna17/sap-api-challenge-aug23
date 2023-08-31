@@ -6,6 +6,8 @@ It's a LoL - lots of Learnings....
 
 In this Git-Repo you can get exclusive content on [Node-Red](http://nodered.org/docs) to solve Challenge Tasks.
 
+![image](https://github.com/sabarna17/sap-api-challenge-aug23/blob/main/Untitled%20Diagram.drawio)
+
 ![image](https://github.com/sabarna17/sap-api-challenge-aug23/assets/39834671/897aa5cb-b247-4d3f-8737-da68e4d23707)
 
 ## Prerequisites
@@ -13,7 +15,9 @@ Node-Red is a very powerful No-code-low-code Open Source platform Built on Node.
 Please go through the [features](https://nodered.org/#features) for details.
 
 ## [For Installation of Node-Red](https://nodered.org/docs/getting-started/local)
-## [SAP BTP Cloud & Node-RED](https://blogs.sap.com/2020/09/29/all-about-node-red-deployment-in-sap-cloud-foundry/) - 
+## [SAP BTP Cloud & Node-RED](https://blogs.sap.com/2020/09/29/all-about-node-red-deployment-in-sap-cloud-foundry/)
+
+Let's now jump straight to the Solutions of the API Challenge Tasks->
 
 ## [Task-0](https://groups.community.sap.com/t5/application-development/sap-developer-challenge-apis-task-0-learn-to-share-your-task/m-p/276058#M2319)
 Create a Subflow. Import the flows from file - [SAP-API Hash](https://github.com/sabarna17/sap-api-challenge-aug23/blob/main/SAP-API%20Hash.json)
