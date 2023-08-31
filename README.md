@@ -6,8 +6,7 @@ It's a LoL - lots of Learnings....
 
 In this Git-Repo you can get exclusive content on [Node-Red](http://nodered.org/docs) to solve Challenge Tasks.
 
-
-
+![img](https://github.com/sabarna17/sap-api-challenge-aug23/blob/main/SAP-API-Challenege-AUG23.gif)
 
 ## Prerequisites
 Node-Red is a very powerful No-code-low-code Open Source platform Built on Node.JS which helps you to develop any low/medium complex applications. 
